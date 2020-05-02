@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400&display=swap');
+
+/* Animations  */
+@keyframes moveInLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-120rem);
+	}
+
+	80% {
+		transform: translateX(20rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+@keyframes moveOutLeft {
+	0% {
+		opacity: 1;
+		transform: translate(0);
+	}
+
+	80% {
+		transform: translateX(70rem);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(-120rem);
+	}
+}
+
+@keyframes moveInRight {
+	0% {
+		opacity: 0;
+		transform: translateX(120rem);
+	}
+
+	80% {
+		transform: translateX(-20rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+@keyframes moveOutRight {
+	0% {
+		opacity: 1;
+		transform: translate(0);
+	}
+
+	80% {
+		transform: translateX(-70rem);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(120rem);
+	}
+}
+
+@keyframes moveInBottom {
+	0% {
+		opacity: 0;
+		transform: translateY(40rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+@keyframes moveOutBottom {
+	0% {
+		opacity: 1;
+		transform: translate(0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateY(40rem);
+	}
+}
+
+@keyframes borderMoveIn {
+	0% {
+		border-color: transparent;
+	}
+
+	50% {
+		border-color: rgba(255, 255, 255, 0.486);
+	}
+
+	100% {
+		border-color: rgba(255, 255, 255, 0.822);
+	}
+}
+
+@keyframes borderMoveOut {
+	0% {
+		border-color: rgba(255, 255, 255, 0.822);
+	}
+
+	50% {
+		border-color: rgba(255, 255, 255, 0.486);
+	}
+
+	100% {
+		border-color: transparent;
+	}
+}
+
+/* Global setup  */
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-image: linear-gradient(to top, #e74c3c, #e67e22);
+	color: var(--text-color);
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	padding: 10rem;
+	border: double transparent;
+	/* fix for the "shakiness" during animation */
+	backface-visibility: hidden;
+}
+
+.header--moveInBorder {
+	animation: borderMoveIn 3s ease-in-out;
+	animation-fill-mode: forwards;
+}
+
+.header--moveOutBorder {
+	animation: borderMoveOut 0.5s ease-in-out;
+	animation-fill-mode: forwards;
+}
+
+.heading-play {
+	color: #fff;
+	text-transform: uppercase;
+	/* fix for the "shakiness" during animation */
+	backface-visibility: hidden;
+	margin-bottom: 3rem;
+}
+
+.heading-play--main {
+	display: block;
+	font-size: 6rem;
+	font-weight: 400;
+	letter-spacing: 3.5rem;
+	animation: moveInLeft 1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.heading-play--sub {
+	display: block;
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 1.75rem;
+	animation: moveInRight 1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.heading-play--main:hover {
+	transform: skewY(2deg) scale(1.1);
+}
+
+.heading-play--sub:hover {
+	transform: skewY(-2deg) scale(1.1);
+}
+
+.heading-play--main--moveOut {
+	animation: moveOutLeft 1s ease-in-out;
+	animation-fill-mode: forwards;
+}
+
+.heading-play--sub--moveOut {
+	animation: moveOutRight 1s ease-in-out;
+	animation-fill-mode: forwards;
+}
+
+.btn {
+	color: #fff;
+	background-color: transparent;
+	cursor: pointer;
+	outline: none;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 1rem 6rem;
+	display: inline-block;
+	border-top: solid 1px #fff;
+	border-bottom: solid 1px #fff;
+	border-right: transparent;
+	border-left: transparent;
+	transition: all 0.2s;
+	position: relative;
+	font-size: 2.5rem;
+	/* fix for the "shakiness" during animation */
+	backface-visibility: hidden;
+}
+
+.btn:hover {
+	transform: translateY(-1rem);
+	box-shadow: 0 4rem 2rem -2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover::after {
+	transform: scaleX(1.4) scaleY(1.6);
+	opacity: 0;
+}
+
+.btn:active {
+	transform: translateY(0);
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn--moveIn {
+	animation: moveInBottom 1s ease-in-out;
+}
+
+.btn--moveOut {
+	animation: moveOutBottom 1s ease-in-out;
+	animation-fill-mode: forwards;
+}
