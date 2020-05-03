@@ -249,3 +249,133 @@ body {
 	animation: moveOutBottom 1s ease-in-out;
 	animation-fill-mode: forwards;
 }
+
+.game {
+	display: flex;
+	flex-direction: column;
+	padding: 10rem;
+	border: double transparent;
+	/* fix for the "shakiness" during animation */
+	backface-visibility: hidden;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: flex;
+}
+
+.cards-container {
+	display: flex;
+	flex-direction: row;
+	padding: 1rem;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	margin: 1rem;
+}
+
+.scene {
+	width: 20rem;
+	height: 20rem;
+	margin: 3rem;
+	perspective: 100rem;
+}
+
+.card {
+	width: 100%;
+	height: 100%;
+	transition: transform 1s;
+	transform-style: preserve-3d;
+	cursor: pointer;
+	position: relative;
+	animation: moveInBottom 1s ease-in-out;
+}
+
+.card.is-flipped {
+	transform: rotateY(180deg);
+}
+
+.card__face {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	line-height: 20rem;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 4rem;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.card__face--front {
+	background: #e74c3c;
+	border: dashed 0.1rem rgba(255, 255, 255, 0.450);
+}
+
+.card__face--back {
+	border: dashed 0.1rem rgba(255, 255, 255, 0.450);
+	background: #e67e22;
+	transform: rotateY(180deg);
+}
+
+.heading-game {
+	color: #fff;
+	text-transform: uppercase;
+	/* fix for the "shakiness" during animation */
+	backface-visibility: hidden;
+	margin-bottom: 2rem;
+}
+
+.heading-game--guide {
+	display: block;
+	font-size: 6rem;
+	font-weight: 400;
+	letter-spacing: 2rem;
+	animation: moveInLeft 1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+	margin-bottom: 2rem;
+}
+
+.heading-game--time {
+	display: inline-block;
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 1.75rem;
+	animation: moveInRight 1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+	margin-right: 10rem;
+}
+
+.heading-game--score {
+	display: inline-block;
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 1.75rem;
+	animation: moveInRight 1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.heading-game--guide:hover {
+	transform: skewY(-2deg) scale(1.1);
+}
+
+.heading-game--time:hover {
+	transform: skewY(2deg) scale(1.1);
+}
+
+.heading-game--score:hover {
+	transform: skewY(-2deg) scale(1.1);
+}
